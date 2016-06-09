@@ -10,15 +10,18 @@ function sendSlack(message, context) {
   options.method = 'POST';
   options.headers = {'Content-Type': 'application/json'};
 
-  https.request(options, (res) => {
+  let req = https.request(options, (res) => {
     if (res.statusCode === 200) {
       context.succeed('posted to slack');
     } else {
       context.fail('status code: ' + res.statusCode);
     }
-  }).on('error', function(e) {
+  });
+
+  req.on('error', function(e) {
     context.fail(e.message);
   });
+
   req.write(JSON.stringify({"text": message, "link_names": 1}));
   req.end();
 }
