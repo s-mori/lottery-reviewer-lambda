@@ -1,0 +1,7 @@
+{
+  "slack_hook_url": "https://hooks.slack.com/services/...",
+  "github": {
+    "team_id": "12341234",
+    "access_token": "AAAAAAAA..."
+  }
+}
